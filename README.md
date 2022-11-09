@@ -28,14 +28,14 @@ The configuration file, `nextflow.config`, is where you specify parameters for e
 	- a short description of the workflow
 	- the author of the workflow
 
-## a Git Ignore file
+## A Git Ignore file
 The file `.gitignore` tells git which folders and files to ignore. In most cases, you will want to refrain from uploading the following to GitHub:
 1. The nextflow cache folder, which is called `.nextflow`.
 2. The work directory `work/`. Most of the files within this directory are actually symlinks anyway, which cannot be uploaded to GitHub or elsewhere. As such, the `work/` directory is generally useless outside the context of whatever machine the workflow was run on, and will often contain large intermediate files, depending on your use case.
 	- _Important sidenote about this work directory_: Within `work/`, Nextflow creates a sub-directory that serves as a working directory for each and every execution of every process. This is why we don't have to worry about file paths in NextFlow in the same way we worry about them in Snakemake, say: As long as you properly specify inputs and outputs, the script and each process will always be able to find the files it needs in the current directory, `.`. This is great for scientific reproducibility as well, as it means you never need to hard-code file paths anywhere (unless you're specifying them as a parameter in `nextflow.config`.
 3. The Nova cache directory for users who, like me, use the app Nova to write scripts, manage projects, and transfer files.
 4. Nextflow logs (`nextflow.log`), which are generally useless outside the context of the machine a workflow is run on.
-5. Old trace files, reports, and timelines that are now deprectated.
+5. Old trace files, reports, and timelines that are now deprecated.
 6. Intermediate `.dot` files for the DAG visualization. This is an archaic file format that is produced when you try to produce a DAG png (see above), but do not have GraphViz installed.
 7. Old DAG PNG's, which are deprecated.
 
